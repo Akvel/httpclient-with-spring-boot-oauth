@@ -1,0 +1,21 @@
+oauth-client:
+  client-id: my-sso-client
+  login: "this-is-my-login"
+  password: "this-is-my-password"
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          my-token-provider:
+            token-uri: "http://localhost:8089/auth/realms/my-realm/protocol/openid-connect/token"
+        registration:
+          my-sso-client:
+            provider: my-token-provider
+            client-id: "this-is-my-client"
+            client-secret: "this-is-my-client-secret"
+            authorization-grant-type: password
+  main:
+    web-application-type: NONE
+    banner-mode: off
